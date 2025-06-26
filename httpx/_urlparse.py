@@ -21,12 +21,13 @@ from __future__ import annotations
 import ipaddress
 import re
 import typing
+import os
 
 import idna
 
 from ._exceptions import InvalidURL
 
-MAX_URL_LENGTH = 65536
+MAX_URL_LENGTH = int(os.environ.get("HTTPX_MAX_URL_LENGTH", 65536))
 
 # https://datatracker.ietf.org/doc/html/rfc3986.html#section-2.3
 UNRESERVED_CHARACTERS = (
